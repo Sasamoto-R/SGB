@@ -1,3 +1,5 @@
+use std::io::BufReader;
+
 // カートリッジで使用されているMBC(存在する場合)及びカードリッジにさらに外部ハードウェアが存在するかどうか指定
 pub enum CartridgeType {
    Rom_only                       = 0x00,
@@ -49,8 +51,8 @@ pub struct CartridgeHeader {
     pub data: Vec<u8>,
 }
 
-impl CartridgeHeader {
-    pub fn new(reader: &mut BufReader<File>) -> Result<CartridgeHeader> {
-
-    }
-}
+//    impl CartridgeHeader {
+//        pub fn new(reader: &mut BufReader<File>) -> Result<CartridgeHeader> {
+//
+//        }
+//    }
