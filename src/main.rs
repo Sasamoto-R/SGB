@@ -35,7 +35,7 @@ fn main() {
     let args = env::args().collect::<Vec<String>>();
 
     let mut cartridgeFile = BufReader::new(File::open(args[1].clone()).unwrap());
-//    let cartridgeInfo = cartridge::CartridgeHeader::new(&mut cartridgeFile).unwrap();
+    let cartridgeInfo = cartridge::CartridgeHeader::new(&mut cartridgeFile).unwrap();
 
     'running: loop {
         for event in event_pump.poll_iter() {
