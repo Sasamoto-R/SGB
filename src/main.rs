@@ -1,4 +1,7 @@
-mod cartridge;
+mod cartridge_rom;
+mod cpu;
+mod Bus;
+mod io_controller;
 
 use pixels::{Pixels, SurfaceTexture};
 use std::env;
@@ -32,10 +35,9 @@ fn main() {
         .unwrap();
     let mut event_pump = sdl_context.event_pump().unwrap();
 
-    let args = env::args().collect::<Vec<String>>();
+    let args = env::args().nth(1).unwrap();
 
-    let mut cartridgeFile = BufReader::new(File::open(args[1].clone()).unwrap());
-    let cartridgeInfo = cartridge::CartridgeHeader::new(&mut cartridgeFile).unwrap();
+    let mut cpu = cpu::CPU::new(&args);
 
     'running: loop {
         for event in event_pump.poll_iter() {
