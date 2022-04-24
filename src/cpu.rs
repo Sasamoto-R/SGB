@@ -1,4 +1,7 @@
+use Bus;
+
 pub struct CPU {
+    bus: Bus,
     a:  u8,
     b:  u8,
     c:  u8,
@@ -14,7 +17,8 @@ pub struct CPU {
 }
 
 impl CPU {
-    pub new() -> Self {
+    pub new(cartridge_name: &str) -> Self {
+        bus:    Bus::new(cartridge_name);
         a:      0,
         b:      0,
         c:      0,
